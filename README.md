@@ -1,6 +1,6 @@
 # CSV-JSON
 
-Simple GO HTTP server for parsing input query string and outputting it to CSV or JSON data.
+Simple GO HTTP server with TLS encryption for parsing input query string and outputting it to CSV or JSON data. Just a simple experiment with Golang :)
 
 ## Installation
 
@@ -13,6 +13,16 @@ openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650
 
 ## Usage
 
+```sh
+# Convert POST parameters to JSON (/csv2json)
+$ curl -k -XPOST "https://localhost:8443/csv2json?key1=value1&key2=value2&key3=value3"
+{"key1":["value1"],"key2":["value2"],"key3":["value3"]}
+
+# Convert POST parameters to CSV (/json2csv)
+$ curl -k -XPOST "https://localhost:8443/json2csv?key1=value1&key2=value2&key3=value3"
+key2,key3,key1
+value2,value3,value1
+```
 
 
 ## Contributing
@@ -25,12 +35,12 @@ openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650
 
 ## History
 
-TODO: Write history
+2017-11-22 Initial commit
 
 ## Credits
 
-TODO: Write credits
+Jaakko Leskinen
 
 ## License
 
-TODO: Write license
+MIT License
